@@ -4,23 +4,17 @@ import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import ip from 'ip';
 
-
-export default defineConfig(({mode}) => ({
-    plugins: [  
-        vue(),
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
-        tailwindcss(),
-
-    ],
-
-   ...(mode == 'development' && {
-    server:{
-        host: ip.address(),
-        port: 5713,
-    },
-   })
-    
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    vue(),
+    laravel({
+      input: ['resources/css/app.css', 'resources/js/app.js'],
+      refresh: true,
+    }),
+    tailwindcss(),
+  ],
+  server: mode === 'development' ? {
+    host: ip.address(),
+    port: 5713,
+  } : undefined,
 }));
