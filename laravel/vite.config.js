@@ -5,8 +5,8 @@ import vue from '@vitejs/plugin-vue';
 import ip from 'ip';
 
 
-export default defineConfig({
-    plugins: [
+export default defineConfig(({mode}) => ({
+    plugins: [  
         vue(),
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
@@ -16,9 +16,11 @@ export default defineConfig({
 
     ],
 
+   ...(mode == 'development' && {
     server:{
         host: ip.address(),
         port: 5713,
     },
+   })
     
-});
+}));
