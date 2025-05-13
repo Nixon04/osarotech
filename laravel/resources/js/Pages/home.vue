@@ -1,6 +1,8 @@
 <script setup>
   import Headers  from './front_components/headers.vue';
   import Footer  from './front_components/footer.vue';
+  import './front_components/asset/app.css';
+  import './front_components/asset/media.css';
   const asseturl = (path) => `/images/${path}`;
 </script>
 
