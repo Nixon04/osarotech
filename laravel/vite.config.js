@@ -2,9 +2,8 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
-import ip from 'ip';
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [
     vue(),
     laravel({
@@ -13,8 +12,4 @@ export default defineConfig(({ mode }) => ({
     }),
     tailwindcss(),
   ],
-  server: mode === 'development' ? {
-    host: ip.address(),
-    port: 5713,
-  } : undefined,
-}));
+});
